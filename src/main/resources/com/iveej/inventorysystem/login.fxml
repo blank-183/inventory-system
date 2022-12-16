@@ -1,16 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.iveej.inventorysystem.Controller">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="478.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="441.0" fitWidth="444.0" layoutX="12.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/inventory.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="81.0" layoutY="538.0" text="Inventory Management System">
+               <font>
+                  <Font name="Verdana" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="32.0" text="THE LAST GREAT ">
+               <font>
+                  <Font name="Freestyle Script" size="48.0" />
+               </font>
+            </Label>
+            <Label layoutX="130.0" layoutY="87.0" text="AMERICAN GROCERY">
+               <font>
+                  <Font name="Freestyle Script" size="48.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="600.0" prefWidth="451.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <AnchorPane layoutX="34.0" layoutY="119.0" prefHeight="363.0" prefWidth="344.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15px;">
+               <effect>
+                  <DropShadow height="34.5" radius="28.375" width="81.0">
+                     <color>
+                        <Color red="0.8421052694320679" green="0.8421052694320679" blue="0.8421052694320679" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <Label layoutX="107.0" layoutY="51.0" text="User Login">
+                     <font>
+                        <Font name="Verdana Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="117.0" text="Username">
+                     <font>
+                        <Font name="Verdana" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="183.0" text="Password">
+                     <font>
+                        <Font name="Verdana" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="126.0" layoutY="110.0" prefHeight="35.0" prefWidth="184.0" promptText="Enter username">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField layoutX="126.0" layoutY="176.0" prefHeight="35.0" prefWidth="184.0" promptText="Enter password">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </PasswordField>
+                  <Button layoutX="35.0" layoutY="249.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="275.0" style="-fx-background-color: #395e65;" text="Login" textFill="WHITE">
+                     <font>
+                        <Font name="Verdana Bold" size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>
