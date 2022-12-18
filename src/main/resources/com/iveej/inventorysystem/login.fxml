@@ -16,19 +16,24 @@
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="478.0" style="-fx-background-color: #ffffff;">
          <children>
-            <ImageView fitHeight="441.0" fitWidth="444.0" layoutX="13.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="441.0" fitWidth="444.0" layoutX="12.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/inventory.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="64.0" layoutY="541.0" text="Inventory Management System">
+            <Label layoutX="65.0" layoutY="523.0" text="Inventory Management System">
                <font>
                   <Font name="Verdana Bold" size="19.0" />
                </font>
             </Label>
-            <Label layoutX="36.0" layoutY="28.0" text="Tiyo Mitoy's Sari-sari Store">
+            <Label layoutX="44.0" layoutY="30.0" text="Tiyo Mitoy's">
                <font>
-                  <Font name="Freestyle Script" size="52.0" />
+                  <Font name="Lucida Calligraphy Italic" size="40.0" />
+               </font>
+            </Label>
+            <Label layoutX="118.0" layoutY="75.0" text="Sari-sari Store">
+               <font>
+                  <Font name="Lucida Calligraphy Italic" size="40.0" />
                </font>
             </Label>
          </children>
