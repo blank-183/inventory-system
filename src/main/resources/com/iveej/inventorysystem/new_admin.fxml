@@ -14,7 +14,7 @@
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="400.0">
          <children>
-            <Label layoutX="39.0" layoutY="37.0" text="Hello!">
+            <Label layoutX="39.0" layoutY="37.0" text="Hello!" textFill="#22373c">
                <font>
                   <Font name="Verdana Bold" size="20.0" />
                </font>
@@ -85,7 +85,7 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="125.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/profile.png" />
+                  <Image url="@img/user.png" />
                </image>
             </ImageView>
             <Label layoutX="98.0" layoutY="305.0" text="Create new admin" textFill="WHITE">

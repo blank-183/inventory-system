@@ -12,54 +12,103 @@
    <children>
       <AnchorPane prefHeight="700.0" prefWidth="280.0" style="-fx-background-color: #395e65;">
          <children>
-            <Button alignment="BASELINE_LEFT" layoutX="26.0" layoutY="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #4d6b74; -fx-cursor: hand;" text="HOME" textFill="WHITE">
-               <font>
-                  <Font name="Verdana Bold" size="20.0" />
-               </font>
-            </Button>
-            <Button alignment="BASELINE_LEFT" layoutX="26.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #2e4950; -fx-cursor: hand;" text="PRODUCTS" textFill="WHITE">
-               <font>
-                  <Font name="Verdana Bold" size="20.0" />
-               </font>
-            </Button>
-            <Button alignment="BASELINE_LEFT" layoutX="26.0" layoutY="220.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #2e4950; -fx-cursor: hand;" text="CATEGORIES" textFill="WHITE">
-               <font>
-                  <Font name="Verdana Bold" size="20.0" />
-               </font>
-            </Button>
-            <Button alignment="BASELINE_LEFT" layoutX="26.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #2e4950; -fx-cursor: hand;" text="NEW ORDER" textFill="#fcfcfc">
-               <font>
-                  <Font name="Verdana Bold" size="20.0" />
-               </font>
-            </Button>
-            <Button alignment="BASELINE_LEFT" layoutX="26.0" layoutY="320.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #2e4950; -fx-cursor: hand;" text="TRANSACTIONS" textFill="WHITE">
-               <font>
-                  <Font name="Verdana Bold" size="20.0" />
-               </font>
-            </Button>
-            <Button alignment="BASELINE_LEFT" layoutX="26.0" layoutY="370.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #2e4950; -fx-cursor: hand;" text="MANAGE USERS" textFill="WHITE">
-               <font>
-                  <Font name="Verdana Bold" size="20.0" />
-               </font>
-            </Button>
-            <Button layoutX="79.0" layoutY="575.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-border-color: white; -fx-border-radius: 25px;" text="Log out" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="26.0" layoutY="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #4d6b74#4d6b74; -fx-cursor: hand;" text="HOME" textFill="#ebeff0">
                <font>
                   <Font name="Verdana Bold" size="18.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="30.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+            <Button alignment="BASELINE_LEFT" layoutX="26.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #2e4950; -fx-cursor: hand;" text="PRODUCTS" textFill="#ebeff0">
+               <font>
+                  <Font name="Verdana Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/products.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" layoutX="26.0" layoutY="220.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #2e4950; -fx-cursor: hand;" text="CATEGORIES" textFill="#ebeff0">
+               <font>
+                  <Font name="Verdana Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/category.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" layoutX="26.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #2e4950; -fx-cursor: hand;" text="NEW ORDER" textFill="#ebeff0">
+               <font>
+                  <Font name="Verdana Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/new_order.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" layoutX="26.0" layoutY="320.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #2e4950; -fx-cursor: hand;" text="TRANSACTIONS" textFill="#ebeff0">
+               <font>
+                  <Font name="Verdana Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/transactions.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" layoutX="26.0" layoutY="370.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #2e4950; -fx-cursor: hand;" text="MANAGE USERS" textFill="#ebeff0">
+               <font>
+                  <Font name="Verdana Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/manage_users.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="72.0" layoutY="576.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="139.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-border-color: #ebeff0; -fx-border-width: 2px; -fx-border-radius: 20px;" text="Log out" textFill="#ebeff0">
+               <font>
+                  <Font name="Verdana Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/logout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="26.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/user.png" />
                </image>
             </ImageView>
-            <Label layoutX="91.0" layoutY="37.0" text="Ivee Jintalan" textFill="WHITE">
+            <Label layoutX="86.0" layoutY="35.0" maxWidth="170.0" prefWidth="170.0" text="Ivee Jintalan" textFill="#ebeff0">
                <font>
-                  <Font name="Verdana" size="20.0" />
+                  <Font name="Verdana" size="19.0" />
                </font>
             </Label>
-            <Label layoutX="92.0" layoutY="62.0" text="Owner" textFill="WHITE">
+            <Label layoutX="87.0" layoutY="60.0" text="Owner" textFill="#ebeff0">
                <font>
-                  <Font name="Verdana" size="15.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
             </Label>
          </children>

@@ -2,6 +2,7 @@ package com.iveej.inventorysystem;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -10,10 +11,10 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("User Login");
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("User Login");
         stage.setResizable(false);
         stage.show();
     }
