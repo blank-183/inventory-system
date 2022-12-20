@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="400.0">
@@ -20,12 +19,12 @@
                   <Font name="Verdana Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="39.0" layoutY="69.0" text="Please sign up to continue" textFill="#6f6f6f">
+            <Label layoutX="39.0" layoutY="69.0" text="Please sign up to continue">
                <font>
                   <Font name="Verdana" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="42.0" layoutY="110.0" text="First name" textFill="#6f6f6f">
+            <Label layoutX="42.0" layoutY="110.0" text="First name">
                <font>
                   <Font name="Verdana" size="15.0" />
                </font>
@@ -35,7 +34,7 @@
                   <Font name="Verdana" size="16.0" />
                </font>
             </TextField>
-            <Label layoutX="43.0" layoutY="183.0" text="Last name" textFill="#6f6f6f">
+            <Label layoutX="43.0" layoutY="183.0" text="Last name">
                <font>
                   <Font name="Verdana" size="15.0" />
                </font>
@@ -45,7 +44,7 @@
                   <Font name="Verdana" size="16.0" />
                </font>
             </TextField>
-            <Label layoutX="42.0" layoutY="256.0" text="Username" textFill="#6f6f6f">
+            <Label layoutX="42.0" layoutY="256.0" text="Username">
                <font>
                   <Font name="Verdana" size="15.0" />
                </font>
@@ -55,7 +54,7 @@
                   <Font name="Verdana" size="16.0" />
                </font>
             </TextField>
-            <Label layoutX="45.0" layoutY="329.0" text="Password" textFill="#6f6f6f">
+            <Label layoutX="45.0" layoutY="329.0" text="Password">
                <font>
                   <Font name="Verdana" size="15.0" />
                </font>
@@ -65,7 +64,7 @@
                   <Font name="Verdana" size="16.0" />
                </font>
             </PasswordField>
-            <Label layoutX="45.0" layoutY="402.0" text="Confirm password" textFill="#6f6f6f">
+            <Label layoutX="45.0" layoutY="402.0" text="Confirm password">
                <font>
                   <Font name="Verdana" size="15.0" />
                </font>

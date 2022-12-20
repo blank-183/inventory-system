@@ -12,35 +12,35 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iveej.inventorysystem.LoginController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iveej.inventorysystem.LoginController">
    <children>
-      <AnchorPane prefHeight="600.0" prefWidth="478.0" style="-fx-background-color: #ffffff;">
+      <AnchorPane prefHeight="700.0" prefWidth="550.0" style="-fx-background-color: #ffffff;">
          <children>
-            <ImageView fitHeight="441.0" fitWidth="444.0" layoutX="12.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="514.0" fitWidth="510.0" layoutX="20.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/inventory.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="65.0" layoutY="523.0" text="Inventory Management System">
+            <Label layoutX="66.0" layoutY="635.0" text="INVENTORY MANAGEMENT SYSTEM">
                <font>
-                  <Font name="Verdana Bold" size="19.0" />
+                  <Font name="Verdana Bold" size="21.0" />
                </font>
             </Label>
-            <Label layoutX="44.0" layoutY="30.0" text="Tiyo Mitoy's">
+            <Label layoutX="63.0" layoutY="21.0" text="Tiyo Mitoy's">
                <font>
-                  <Font name="Lucida Calligraphy Italic" size="40.0" />
+                  <Font name="Lucida Calligraphy Italic" size="45.0" />
                </font>
             </Label>
-            <Label layoutX="118.0" layoutY="75.0" text="Sari-sari Store">
+            <Label layoutX="146.0" layoutY="75.0" text="Sari-sari Store">
                <font>
-                  <Font name="Lucida Calligraphy Italic" size="40.0" />
+                  <Font name="Lucida Calligraphy Italic" size="45.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="600.0" prefWidth="451.0" style="-fx-background-color: #ffffff;">
+      <AnchorPane prefHeight="700.0" prefWidth="450.0" style="-fx-background-color: #ffffff;">
          <children>
-            <AnchorPane layoutX="34.0" layoutY="76.0" prefHeight="449.0" prefWidth="344.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15px;">
+            <AnchorPane layoutX="14.0" layoutY="126.0" prefHeight="449.0" prefWidth="357.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15px;">
                <effect>
                   <DropShadow height="34.5" radius="28.375" width="81.0">
                      <color>
@@ -49,47 +49,47 @@
                   </DropShadow>
                </effect>
                <children>
-                  <Label layoutX="95.0" layoutY="134.0" text="USER LOGIN">
+                  <Label layoutX="101.0" layoutY="134.0" text="USER LOGIN">
                      <font>
                         <Font name="Verdana Bold" size="22.0" />
                      </font>
                   </Label>
-                  <Label layoutX="35.0" layoutY="189.0" text="Username">
+                  <Label layoutX="41.0" layoutY="189.0" text="Username">
                      <font>
                         <Font name="Verdana" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="35.0" layoutY="255.0" text="Password">
+                  <Label layoutX="41.0" layoutY="255.0" text="Password">
                      <font>
                         <Font name="Verdana" size="16.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="126.0" layoutY="182.0" prefHeight="35.0" prefWidth="184.0" promptText="Enter username">
+                  <TextField fx:id="tfUsername" layoutX="132.0" layoutY="182.0" prefHeight="35.0" prefWidth="184.0" promptText="Enter username">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <PasswordField layoutX="126.0" layoutY="248.0" prefHeight="35.0" prefWidth="184.0" promptText="Enter password">
+                  <PasswordField fx:id="tfPassword" layoutX="132.0" layoutY="248.0" prefHeight="35.0" prefWidth="184.0" promptText="Enter password">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </PasswordField>
-                  <Button layoutX="35.0" layoutY="321.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="275.0" style="-fx-background-color: #395e65; -fx-cursor: hand;" text="Login" textFill="WHITE">
+                  <Button fx:id="btnLogin" layoutX="41.0" layoutY="321.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="275.0" style="-fx-background-color: #395e65; -fx-cursor: hand;" text="Login" textFill="WHITE">
                      <font>
                         <Font name="Verdana Bold" size="20.0" />
                      </font>
                   </Button>
-                  <Label layoutX="39.0" layoutY="390.0" text="Not registered?">
+                  <Label layoutX="45.0" layoutY="390.0" text="Not registered?">
                      <font>
                         <Font name="Verdana" size="14.0" />
                      </font>
                   </Label>
-                  <Button layoutX="148.0" layoutY="385.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Create new account" textFill="#019d86" underline="true">
+                  <Button fx:id="btnCreateAccount" layoutX="154.0" layoutY="385.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Create new account" textFill="#019d86" underline="true">
                      <font>
                         <Font name="Verdana" size="14.0" />
                      </font>
                   </Button>
-                  <ImageView fitHeight="84.0" fitWidth="91.0" layoutX="130.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="84.0" fitWidth="91.0" layoutX="136.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/profile.png" />
                      </image>
