@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iveej.inventorysystem.NewAdminController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="400.0">
          <children>
@@ -29,7 +29,7 @@
                   <Font name="Verdana" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="42.0" layoutY="135.0" prefHeight="35.0" prefWidth="320.0" promptText="Enter first name">
+            <TextField fx:id="tfFirstName" layoutX="42.0" layoutY="135.0" prefHeight="35.0" prefWidth="320.0" promptText="Enter first name">
                <font>
                   <Font name="Verdana" size="16.0" />
                </font>
@@ -39,7 +39,7 @@
                   <Font name="Verdana" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="42.0" layoutY="208.0" prefHeight="35.0" prefWidth="320.0" promptText="Enter last name">
+            <TextField fx:id="tfLastName" layoutX="42.0" layoutY="208.0" prefHeight="35.0" prefWidth="320.0" promptText="Enter last name">
                <font>
                   <Font name="Verdana" size="16.0" />
                </font>
@@ -49,7 +49,7 @@
                   <Font name="Verdana" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="42.0" layoutY="281.0" prefHeight="35.0" prefWidth="320.0" promptText="Enter username">
+            <TextField fx:id="tfUsername" layoutX="42.0" layoutY="281.0" prefHeight="35.0" prefWidth="320.0" promptText="Enter username">
                <font>
                   <Font name="Verdana" size="16.0" />
                </font>
@@ -59,7 +59,7 @@
                   <Font name="Verdana" size="15.0" />
                </font>
             </Label>
-            <PasswordField layoutX="42.0" layoutY="354.0" prefHeight="35.0" prefWidth="320.0" promptText="Enter password">
+            <PasswordField fx:id="pfPassword" layoutX="42.0" layoutY="354.0" prefHeight="35.0" prefWidth="320.0" promptText="Enter password">
                <font>
                   <Font name="Verdana" size="16.0" />
                </font>
@@ -69,7 +69,7 @@
                   <Font name="Verdana" size="15.0" />
                </font>
             </Label>
-            <PasswordField layoutX="42.0" layoutY="427.0" prefHeight="35.0" prefWidth="320.0" promptText="Confirm password">
+            <PasswordField fx:id="pfConfirmPassword" layoutX="42.0" layoutY="427.0" prefHeight="35.0" prefWidth="320.0" promptText="Confirm password">
                <font>
                   <Font name="Verdana" size="16.0" />
                </font>
@@ -93,7 +93,7 @@
                   <Font name="Verdana Bold" size="20.0" />
                </font>
             </Label>
-            <Button layoutX="158.0" layoutY="343.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #ffffff; -fx-border-radius: 15px; -fx-cursor: hand;" text="Go back" textFill="WHITE">
+            <Button fx:id="btnGoBack" onAction="#btnGoBackAction" layoutX="158.0" layoutY="343.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #ffffff; -fx-border-radius: 15px; -fx-cursor: hand;" text="Go back" textFill="WHITE">
                <font>
                   <Font name="Verdana" size="15.0" />
                </font>
