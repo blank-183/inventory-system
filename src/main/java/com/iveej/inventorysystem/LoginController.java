@@ -34,7 +34,7 @@ public class LoginController extends Utils implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String query = "SELECT * FROM user WHERE role_id = 1";
+        String query = "SELECT * FROM user";
 
         try(Connection conn = ConnectDB.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query);
@@ -53,27 +53,17 @@ public class LoginController extends Utils implements Initializable {
     }
 
     public void btnCreateAccountAction(ActionEvent event) {
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("new_admin.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Create new admin");
-        stage.setResizable(false);
-        stage.show();
-
+        changeScene(event, "new_admin.fxml", "Create new admin");
     }
 
     public void btnLoginAction(ActionEvent event) {
-        if(!tfUsername.getText().isBlank() && !pfPassword.getText().isBlank()) {
+        String username = tfUsername.getText();
+        String password = pfPassword.getText();
+
+        if(!username.isBlank() && !password.isBlank()) {
             validateLogin();
         } else {
-            showMessage(Alert.AlertType.ERROR, "Error",
+            showMessage(Alert.AlertType.ERROR, Constant.ERROR_MESSAGE,
                     "Please enter username and password!",
                     "All fields are required.");
         }

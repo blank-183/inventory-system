@@ -74,7 +74,7 @@
                   <Font name="Verdana" size="16.0" />
                </font>
             </PasswordField>
-            <Button layoutX="116.0" layoutY="498.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="173.0" style="-fx-background-color: #395e65; -fx-cursor: hand;" text="Create" textFill="WHITE">
+            <Button fx:id="btnCreate" layoutX="116.0" layoutY="498.0" mnemonicParsing="false" onAction="#btnCreateAction" prefHeight="39.0" prefWidth="173.0" style="-fx-background-color: #395e65; -fx-cursor: hand;" text="Create" textFill="WHITE">
                <font>
                   <Font name="Verdana Bold" size="20.0" />
                </font>
@@ -93,7 +93,7 @@
                   <Font name="Verdana Bold" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="btnGoBack" onAction="#btnGoBackAction" layoutX="158.0" layoutY="343.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #ffffff; -fx-border-radius: 15px; -fx-cursor: hand;" text="Go back" textFill="WHITE">
+            <Button fx:id="btnGoBack" layoutX="158.0" layoutY="343.0" mnemonicParsing="false" onAction="#btnGoBackAction" style="-fx-background-color: transparent; -fx-border-color: #ffffff; -fx-border-radius: 15px; -fx-cursor: hand;" text="Go back" textFill="WHITE">
                <font>
                   <Font name="Verdana" size="15.0" />
                </font>
