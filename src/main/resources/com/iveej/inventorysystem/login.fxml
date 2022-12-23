@@ -21,9 +21,9 @@
                   <Image url="@img/inventory.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="51.0" layoutY="571.0" text="INVENTORY MANAGEMENT SYSTEM" textFill="#22373c">
+            <Label layoutX="56.0" layoutY="575.0" text="INVENTORY MANAGEMENT SYSTEM" textFill="#22373c">
                <font>
-                  <Font name="Verdana" size="25.0" />
+                  <Font name="Verdana Bold" size="22.0" />
                </font>
             </Label>
             <Label layoutX="67.0" layoutY="19.0" text="Tiyo Mitoy's" textFill="#22373c">
