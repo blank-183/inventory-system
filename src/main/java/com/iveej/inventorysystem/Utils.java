@@ -17,6 +17,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Utils {
 
@@ -94,5 +96,21 @@ public class Utils {
             }
         }
         return true;
+    }
+
+    public boolean isUsernameValid(String username) {
+        final String USERNAME_PATTERN = "^[a-zA-Z0-9](_(?!_)|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$";
+        final Pattern pattern = Pattern.compile(USERNAME_PATTERN);
+
+        Matcher matcher = pattern.matcher(username);
+
+        if(matcher.matches()) {
+            return true;
+        }
+        showMessage(Alert.AlertType.ERROR,
+                Constant.ERROR_MESSAGE,
+                "Username is not valid!",
+                "Length must be between 5 and 20. Special characters are not allowed. You can only use underscore (_) but shouldn't start and end with it. Please try another username.");
+        return false;
     }
 }

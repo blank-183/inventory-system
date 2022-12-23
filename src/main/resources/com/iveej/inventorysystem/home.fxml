@@ -104,12 +104,12 @@
                   <Image url="@img/user.png" />
                </image>
             </ImageView>
-            <Label layoutX="86.0" layoutY="35.0" maxWidth="170.0" prefWidth="170.0" text="\@iveejntln" textFill="#ebeff0">
+            <Label fx:id="lblUsername" layoutX="86.0" layoutY="35.0" maxWidth="170.0" prefWidth="170.0" text="iveejntln" textFill="#ebeff0">
                <font>
                   <Font name="Verdana" size="19.0" />
                </font>
             </Label>
-            <Label layoutX="87.0" layoutY="60.0" text="Owner" textFill="#ebeff0">
+            <Label fx:id="lblRole" layoutX="87.0" layoutY="60.0" prefHeight="18.0" prefWidth="75.0" text="Owner" textFill="#ebeff0">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
@@ -130,7 +130,7 @@
                         <Font name="Verdana Bold" size="30.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="38.0" prefWidth="563.0" text="Ivee." textFill="#2e4950">
+                  <Label fx:id="lblFirstName" prefHeight="38.0" prefWidth="563.0" text="Ivee." textFill="#2e4950">
                      <font>
                         <Font name="Verdana Bold" size="30.0" />
                      </font>

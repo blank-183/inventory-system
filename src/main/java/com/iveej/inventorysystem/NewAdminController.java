@@ -12,8 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class NewAdminController extends Utils {
 
@@ -43,9 +41,10 @@ public class NewAdminController extends Utils {
         if(password.equals(confirmPassword)) {
             Optional<ButtonType> result = confirm(Alert.AlertType.CONFIRMATION, Constant.CONFIRM_MESSAGE,
                     "Do you want to create new admin?", "Press \"ok\" to confirm.");
-            if (result.get() == ButtonType.OK){
+            if(result.isPresent() && result.get() == ButtonType.OK) {
                 createAdmin(event, firstName, lastName, username, password);
             }
+
         } else {
             showMessage(Alert.AlertType.ERROR, Constant.ERROR_MESSAGE,
                     "Passwords do not match!",
@@ -87,8 +86,6 @@ public class NewAdminController extends Utils {
             e.printStackTrace();
         }
 
-
-
     }
 
     private boolean isValidLength(String firstName, String lastName, String username) {
@@ -110,22 +107,6 @@ public class NewAdminController extends Utils {
         }
 
         return true;
-    }
-
-    private boolean isUsernameValid(String username) {
-            final String USERNAME_PATTERN = "^[a-zA-Z0-9](_(?!_)|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$";
-            final Pattern pattern = Pattern.compile(USERNAME_PATTERN);
-
-            Matcher matcher = pattern.matcher(username);
-
-            if(matcher.matches()) {
-                return true;
-            }
-            showMessage(Alert.AlertType.ERROR,
-                    Constant.ERROR_MESSAGE,
-                    "Username is not valid!",
-                    "Special characters are not allowed. You can only use underscore (_). Please try another username");
-            return false;
     }
 
     private boolean isUsernameUnique(String username) {
