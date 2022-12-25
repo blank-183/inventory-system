@@ -49,7 +49,7 @@ public class LoginController extends Utils implements Initializable {
     }
 
     public void btnCreateAccountAction(ActionEvent event) {
-        changeScene(event, "new_admin.fxml", "Create new admin");
+        changeScene(event, "new_admin.fxml", "Create new admin", null, null, null, null);
     }
 
     public void btnLoginAction(ActionEvent event) {
@@ -67,7 +67,7 @@ public class LoginController extends Utils implements Initializable {
     }
 
     private void validateLogin(ActionEvent event, String username, String password) {
-        String query = "SELECT username, password FROM user WHERE username = ?";
+        String query = "SELECT username, first_name, password, role_id FROM user WHERE username = ?";
 
         try {
             password = toHexString(getSHA(pfPassword.getText()));
@@ -87,12 +87,13 @@ public class LoginController extends Utils implements Initializable {
                 }
 
                 while(rs.next()) {
+                    String role = getRole(rs.getInt("role_id"));
                     if(username.equals(rs.getString("username")) && password.equals(rs.getString("password"))) {
                         showMessage(Alert.AlertType.INFORMATION, Constant.SUCCESS_MESSAGE,
                                 "User found!",
                                 "You are now logged in.");
 
-                        changeScene(event, "home.fxml", "User Home");
+                        changeScene(event, "home.fxml", "User Home", "Home", username, rs.getString("first_name"), role);
                     } else {
                         showWrongCredentials();
                     }
@@ -101,6 +102,27 @@ public class LoginController extends Utils implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private String getRole(int roleNum) {
+        String query = "SELECT role_name FROM role WHERE id = ?";
+        String role = "";
+
+        try(Connection conn = ConnectDB.getConnection()) {
+            assert conn != null;
+            try(PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setInt(1, roleNum);
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    role = rs.getString("role_name");
+                }
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return role;
     }
 
     private void showWrongCredentials() {
