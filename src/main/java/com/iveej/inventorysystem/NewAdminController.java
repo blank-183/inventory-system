@@ -54,7 +54,7 @@ public class NewAdminController extends Utils {
     }
 
     public void btnGoBackAction(ActionEvent event) {
-        changeScene(event, "login.fxml", "User login", null, null, null, null);
+        changeScene(event, "login.fxml", "User login");
     }
 
     private void createAdmin(ActionEvent event, String firstName, String lastName, String username, String password)  {
@@ -80,7 +80,7 @@ public class NewAdminController extends Utils {
                         "Admin successfully created!",
                         "You can now log in.");
 
-                changeScene(event, "login.fxml", "User login", null, null, null, null);
+                changeScene(event, "login.fxml", "User login");
             }
         } catch (SQLException e) {
             e.printStackTrace();
