@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class LoginController extends Utils implements Initializable {
+public class LoginController extends Controller implements Initializable {
 
     @FXML
     private TextField tfUsername;
@@ -49,7 +49,7 @@ public class LoginController extends Utils implements Initializable {
     }
 
     public void btnCreateAccountAction(ActionEvent event) {
-        changeScene(event, "new_admin.fxml", "Create new admin", null, null, null, null);
+        changeScene(event, "new_admin.fxml", "Create new admin");
     }
 
     public void btnLoginAction(ActionEvent event) {
@@ -57,7 +57,7 @@ public class LoginController extends Utils implements Initializable {
         String password = pfPassword.getText();
 
         if(!username.isBlank() && !password.isBlank()) {
-            if(!isUsernameValid(username)) { return; }
+            if(isUsernameValid(username)) { return; }
             validateLogin(event, username, password);
         } else {
             showMessage(Alert.AlertType.ERROR, Constant.ERROR_MESSAGE,
@@ -92,8 +92,9 @@ public class LoginController extends Utils implements Initializable {
                         showMessage(Alert.AlertType.INFORMATION, Constant.SUCCESS_MESSAGE,
                                 "User found!",
                                 "You are now logged in.");
+                        Controller.setUser(new User(username, rs.getString("first_name"), role));
+                        changeScene(event, "home.fxml", "Home");
 
-                        changeScene(event, "home.fxml", "User Home", "Home", username, rs.getString("first_name"), role);
                     } else {
                         showWrongCredentials();
                     }

@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class NewAdminController extends Utils {
+public class NewAdminController extends Controller {
 
     @FXML
     private TextField tfFirstName;
@@ -35,7 +35,7 @@ public class NewAdminController extends Utils {
 
         if(!isNoBlankField(firstName, lastName, username, password, confirmPassword)) { return; }
         if(!isValidLength(firstName, lastName, username)) { return; }
-        if(!isUsernameValid(username)) { return; }
+        if(isUsernameValid(username)) { return; }
         if(!isPasswordStrong(password)) { return; }
 
         if(password.equals(confirmPassword)) {
@@ -54,17 +54,11 @@ public class NewAdminController extends Utils {
     }
 
     public void btnGoBackAction(ActionEvent event) {
-        changeScene(event, "login.fxml", "User login", null, null, null, null);
+        changeScene(event, "login.fxml", "User login");
     }
 
     private void createAdmin(ActionEvent event, String firstName, String lastName, String username, String password)  {
         String query = "INSERT INTO user (first_name, last_name, username, password, role_id) VALUES (?, ?, ?, ?, 1)";
-
-        try {
-            password = toHexString(getSHA(pfPassword.getText()));
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
 
         try(Connection conn = ConnectDB.getConnection()) {
             assert conn != null;
@@ -72,7 +66,7 @@ public class NewAdminController extends Utils {
                 stmt.setString(1, firstName);
                 stmt.setString(2, lastName);
                 stmt.setString(3, username);
-                stmt.setString(4, password);
+                stmt.setString(4, toHexString(getSHA(password)));
 
                 stmt.execute();
 
@@ -80,12 +74,11 @@ public class NewAdminController extends Utils {
                         "Admin successfully created!",
                         "You can now log in.");
 
-                changeScene(event, "login.fxml", "User login", null, null, null, null);
+                changeScene(event, "login.fxml", "User login");
             }
-        } catch (SQLException e) {
+        } catch (SQLException | NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-
     }
 
     private boolean isValidLength(String firstName, String lastName, String username) {

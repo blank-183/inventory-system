@@ -8,24 +8,22 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HomeController extends Controller implements Initializable {
+public class ProductsController extends Controller implements Initializable {
+
 
     @FXML
     private Label lblUsername;
-    @FXML
-    private Label lblFirstName;
     @FXML
     private Label lblRole;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblUsername.setText(Controller.getUser().getUsername());
-        lblFirstName.setText(Controller.getUser().getFirstName());
         lblRole.setText(Controller.getUser().getRole());
     }
 
-    public void btnProductsAction(ActionEvent event) {
-        changeScene(event, "products.fxml", "View Products");
+    public void btnHomeAction(ActionEvent event) {
+        changeScene(event, "home.fxml", "Home");
     }
 
     public void btnCategoriesAction(ActionEvent event) {
@@ -44,25 +42,8 @@ public class HomeController extends Controller implements Initializable {
 
     }
 
-    public void btnHNewOrderAction(ActionEvent event) {
-
-    }
-
-    public void btnAddProductAction(ActionEvent event) {
-
-    }
-
     public void btnLogOutAction(ActionEvent event) {
 
-    }
-
-    public void setUserInformation(User user) {
-        lblUsername.setText(user.getUsername());
-        if(user.getFirstName().length() > 12)
-            lblFirstName.setText(user.getFirstName().substring(0, 16) + ".");
-        else
-            lblFirstName.setText(user.getFirstName());
-        lblRole.setText(user.getRole());
     }
 
 

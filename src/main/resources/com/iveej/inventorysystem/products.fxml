@@ -5,15 +5,14 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iveej.inventorysystem.ProductsController">
    <children>
       <AnchorPane prefHeight="700.0" prefWidth="280.0" style="-fx-background-color: #395e65;">
          <children>
-            <Button fx:id="btnHome" alignment="BASELINE_LEFT" layoutX="26.0" layoutY="120.0" mnemonicParsing="false" onAction="#btnHomeAction" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #2e4950 #2e4950; -fx-cursor: hand;" text="HOME" textFill="#ebeff0">
+            <Button fx:id="btnHome" alignment="BASELINE_LEFT" layoutX="26.0" layoutY="120.0" mnemonicParsing="false" onAction="#btnHomeAction" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #2e4950; -fx-cursor: hand;" text="HOME" textFill="#ebeff0">
                <font>
                   <Font name="Verdana Bold" size="18.0" />
                </font>
@@ -25,7 +24,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" disable="true" layoutX="26.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #2e4950;" text="PRODUCTS" textFill="#ebeff0">
+            <Button alignment="BASELINE_LEFT" layoutX="26.0" layoutY="170.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: #4d6e74;" text="PRODUCTS" textFill="#ebeff0">
                <font>
                   <Font name="Verdana Bold" size="18.0" />
                </font>
@@ -85,7 +84,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="bntLogOut" layoutX="72.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnLogOutAction" prefHeight="47.0" prefWidth="139.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-border-color: #ebeff0; -fx-border-width: 2px; -fx-border-radius: 20px;" text="Log out" textFill="#ebeff0">
+            <Button fx:id="btnLogOut" layoutX="72.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnLogOutAction" prefHeight="47.0" prefWidth="139.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-border-color: #ebeff0; -fx-border-width: 2px; -fx-border-radius: 20px;" text="Log out" textFill="#ebeff0">
                <font>
                   <Font name="Verdana Bold" size="18.0" />
                </font>
@@ -107,16 +106,13 @@
                   <Font name="Verdana" size="19.0" />
                </font>
             </Label>
-            <Label fx:id="lblRole" layoutX="87.0" layoutY="60.0" prefHeight="18.0" prefWidth="75.0" text="Owner" textFill="#ebeff0">
+            <Label fx:id="lblRole" layoutX="87.0" layoutY="60.0" prefHeight="18.0" prefWidth="165.0" text="Owner" textFill="#ebeff0">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="700.0" prefWidth="820.0" style="-fx-background-color: #E9EAEF;">
-         <children>
-            <FlowPane alignment="CENTER_LEFT" layoutX="31.0" layoutY="136.0" prefHeight="57.0" prefWidth="761.0" />
-         </children></AnchorPane>
+      <AnchorPane prefHeight="700.0" prefWidth="820.0" style="-fx-background-color: #ffffff;" />
    </children>
 </HBox>
