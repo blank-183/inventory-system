@@ -4,21 +4,26 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ProductsController extends Controller implements Initializable {
-
 
     @FXML
     private Label lblUsername;
@@ -40,6 +45,8 @@ public class ProductsController extends Controller implements Initializable {
     private TableColumn<Product, Double> sellPriceCol;
 
     ObservableList<Product> productList = FXCollections.observableArrayList();
+
+    Product selectedProduct = null;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -76,6 +83,7 @@ public class ProductsController extends Controller implements Initializable {
     public void btnRefreshAction() {
         getProductList();
     }
+
     private void getProductList() {
         productList.clear();
         String query = "SELECT * FROM product";
@@ -111,4 +119,26 @@ public class ProductsController extends Controller implements Initializable {
         productsTable.setItems(productList);
     }
 
+    public void btnViewAction(ActionEvent event) throws IOException {
+        selectedProduct = productsTable.getSelectionModel().getSelectedItem();
+
+        if(selectedProduct == null) {
+            return;
+        }
+
+        System.out.println(selectedProduct.getId() + " " + selectedProduct.getName() + " " + selectedProduct.getDescription());
+
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("product_details.fxml")));
+        Parent root = loader.load();
+        ProductDetailsController productDetailsController = loader.getController();
+        productDetailsController.setProductInformation(selectedProduct.getName(), selectedProduct.getCategory(),
+                                                    selectedProduct.getDescription(), selectedProduct.getQuantity(),
+                                                    selectedProduct.getOrgPrice(), selectedProduct.getSellPrice());
+        stage.setScene(new Scene(root));
+        stage.setTitle(selectedProduct.getName());
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+
+    }
 }
