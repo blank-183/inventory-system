@@ -105,27 +105,6 @@ public class LoginController extends Controller implements Initializable {
         }
     }
 
-    private String getRole(int roleNum) {
-        String query = "SELECT role_name FROM role WHERE id = ?";
-        String role = "";
-
-        try(Connection conn = ConnectDB.getConnection()) {
-            assert conn != null;
-            try(PreparedStatement stmt = conn.prepareStatement(query)) {
-                stmt.setInt(1, roleNum);
-                ResultSet rs = stmt.executeQuery();
-
-                while (rs.next()) {
-                    role = rs.getString("role_name");
-                }
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return role;
-    }
-
     private void showWrongCredentials() {
         showMessage(Alert.AlertType.ERROR, Constant.ERROR_MESSAGE,
                 "Wrong username or password!",

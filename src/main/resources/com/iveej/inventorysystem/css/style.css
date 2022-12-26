@@ -1,3 +1,20 @@
 .text-area, .text-area .viewport, .text-area .content {
   -fx-background-color: transparent;
 }
+
+.table-view .column-header,
+.table-view .column-header .filler,
+.table-view .column-header-background .filler {
+    -fx-background-color:  #2e4950;
+    -fx-text-background-color: white;
+    -fx-font-size: 15px;
+    -fx-alignment: center;
+}
+.table-row-cell .highlighted {
+  -fx-background-color: #E9EAEF;
+}
+
+.table-view .table-cell{
+  -fx-font-size: 15px;
+  -fx-alignment: center;
+}

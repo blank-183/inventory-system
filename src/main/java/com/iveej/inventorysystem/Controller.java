@@ -15,6 +15,10 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -120,5 +124,47 @@ public class Controller {
                 "Username is not valid!",
                 "Length must be between 5 and 13. Special characters are not allowed. You can only use underscore (_) but shouldn't start and end with it. Please try another username.");
         return true;
+    }
+
+    public String getRole(int roleNum) {
+        String query = "SELECT role_name FROM role WHERE id = ?";
+        String role = "";
+
+        try(Connection conn = ConnectDB.getConnection()) {
+            assert conn != null;
+            try(PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setInt(1, roleNum);
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    role = rs.getString("role_name");
+                }
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return role;
+    }
+
+    public String getCategory(int catNum) {
+        String query = "SELECT category_name FROM category WHERE id = ?";
+        String category = "";
+
+        try(Connection conn = ConnectDB.getConnection()) {
+            assert conn != null;
+            try(PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setInt(1, catNum);
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    category = rs.getString("category_name");
+                }
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return category;
     }
 }
