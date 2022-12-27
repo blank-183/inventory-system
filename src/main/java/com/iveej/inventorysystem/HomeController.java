@@ -3,9 +3,12 @@ package com.iveej.inventorysystem;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class HomeController extends Controller implements Initializable {
@@ -53,7 +56,7 @@ public class HomeController extends Controller implements Initializable {
     }
 
     public void btnLogOutAction(ActionEvent event) {
-
+        logOutUser(event, "login.fxml", "User login");
     }
 
     public void setUserInformation(User user) {

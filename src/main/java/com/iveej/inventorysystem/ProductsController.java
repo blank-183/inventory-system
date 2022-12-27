@@ -77,7 +77,7 @@ public class ProductsController extends Controller implements Initializable {
     }
 
     public void btnLogOutAction(ActionEvent event) {
-
+        logOutUser(event, "login.fxml", "User login");
     }
 
     public void btnRefreshAction() {

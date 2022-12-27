@@ -167,4 +167,12 @@ public class Controller {
         }
         return category;
     }
+
+    public void logOutUser(ActionEvent event, String fxml, String title) {
+        Optional<ButtonType> result = confirm(Alert.AlertType.CONFIRMATION, Constant.CONFIRM_MESSAGE,
+                "Do you really want to log out?", "Press \"ok\" to confirm.");
+        if(result.isPresent() && result.get() == ButtonType.OK) {
+            changeScene(event, fxml, title);
+        }
+    }
 }
