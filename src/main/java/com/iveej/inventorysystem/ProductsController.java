@@ -141,4 +141,24 @@ public class ProductsController extends Controller implements Initializable {
         stage.showAndWait();
 
     }
+
+    public void btnAddAction(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("add_product.fxml")));
+        Parent root = loader.load();
+        AddProductController addProductController = loader.getController();
+
+        stage.setScene(new Scene(root));
+        stage.setTitle("Add Product");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+    }
+
+    public void btnUpdateAction(ActionEvent event) throws IOException {
+
+    }
+
+    public void btnDeleteAction(ActionEvent event) throws IOException {
+
+    }
 }

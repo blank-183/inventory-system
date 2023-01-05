@@ -148,17 +148,17 @@
                   <Font name="Verdana Bold" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="268.0" layoutY="577.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #2e4950; -fx-background-radius: 25px; -fx-cursor: hand;" text="Add" textFill="WHITE">
+            <Button fx:id="btnAdd" layoutX="268.0" layoutY="577.0" mnemonicParsing="false" onAction="#btnAddAction" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #2e4950; -fx-background-radius: 25px; -fx-cursor: hand;" text="Add" textFill="WHITE">
                <font>
                   <Font name="Verdana Bold" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="424.0" layoutY="577.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #2e4950; -fx-background-radius: 25px; -fx-cursor: hand;" text="Update" textFill="WHITE">
+            <Button fx:id="btnUpdate" layoutX="424.0" layoutY="577.0" mnemonicParsing="false" onAction="#btnUpdateAction" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #2e4950; -fx-background-radius: 25px; -fx-cursor: hand;" text="Update" textFill="WHITE">
                <font>
                   <Font name="Verdana Bold" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="580.0" layoutY="577.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #2e4950; -fx-background-radius: 25px; -fx-cursor: hand;" text="Delete" textFill="WHITE">
+            <Button fx:id="btnDelete" layoutX="580.0" layoutY="577.0" mnemonicParsing="false" onAction="#btnDeleteAction" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #2e4950; -fx-background-radius: 25px; -fx-cursor: hand;" text="Delete" textFill="WHITE">
                <font>
                   <Font name="Verdana Bold" size="16.0" />
                </font>
