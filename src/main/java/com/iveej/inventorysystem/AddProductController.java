@@ -12,8 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.concurrent.atomic.AtomicReferenceArray;
 
 public class AddProductController extends Controller implements Initializable {
 
@@ -33,8 +33,7 @@ public class AddProductController extends Controller implements Initializable {
     private TextField tfOrgPrice;
     @FXML
     private TextField tfSellPrice;
-
-     private ArrayList<String> categories = new ArrayList<>();
+    private ArrayList<String> categories = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -68,36 +67,42 @@ public class AddProductController extends Controller implements Initializable {
 
     public void btnAddAction(ActionEvent event) {
         String productName = tfProductName.getText().trim();
-        Integer categoryID = Integer.parseInt(String.valueOf(categories.indexOf(cbCategory.getValue()))) + 1;
+        String categoryID = categories.indexOf(cbCategory.getValue()) + 1 + "";
         String description = taDescription.getText();
-        Integer quantity = Integer.parseInt(tfQuantity.getText());
-        Double orgPrice = Double.parseDouble(tfOrgPrice.getText());
-        Double sellPrice = Double.parseDouble(tfSellPrice.getText());
+        String quantity = tfQuantity.getText();
+        String orgPrice = tfOrgPrice.getText();
+        String sellPrice = tfSellPrice.getText();
 
-        if(!isNoBlankField(productName, categoryID.toString(), description, quantity.toString(), orgPrice.toString(), sellPrice.toString())) { return; }
+        if(!isNoBlankField(productName, categoryID, description, quantity, orgPrice, sellPrice)) { return; }
 
         String query = "INSERT INTO product (product_name, category_id, description, quantity, original_price, selling_price) VALUES (?, ?, ?, ?, ?, ?)";
 
-        try(Connection conn = ConnectDB.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(query)) {
+        Optional<ButtonType> result = confirm(Alert.AlertType.CONFIRMATION, Constant.CONFIRM_MESSAGE,
+                "Do you want to add this new product?", "Press \"ok\" to confirm.");
+        if(result.isPresent() && result.get() == ButtonType.OK) {
+            try(Connection conn = ConnectDB.getConnection()) {
+                assert conn != null;
+                try(PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            stmt.setString(1, productName);
-            stmt.setInt(2, categoryID);
-            stmt.setString(3, description);
-            stmt.setInt(4, quantity);
-            stmt.setDouble(5, orgPrice);
-            stmt.setDouble(6, sellPrice);
+                    stmt.setString(1, productName);
+                    stmt.setInt(2, Integer.parseInt(categoryID));
+                    stmt.setString(3, description);
+                    stmt.setInt(4, Integer.parseInt(quantity));
+                    stmt.setDouble(5, Double.parseDouble(orgPrice));
+                    stmt.setDouble(6, Double.parseDouble(sellPrice));
 
-            stmt.execute();
+                    stmt.execute();
 
-            showMessage(Alert.AlertType.INFORMATION, Constant.SUCCESS_MESSAGE,
-                    "Product successfully added!",
-                    "You can now view the product.");
+                    showMessage(Alert.AlertType.INFORMATION, Constant.SUCCESS_MESSAGE,
+                            "Product successfully added!",
+                            "You can now view the product.");
 
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.close();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 

@@ -2,6 +2,8 @@ package com.iveej.inventorysystem;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -30,6 +34,8 @@ public class ProductsController extends Controller implements Initializable {
     @FXML
     private Label lblRole;
     @FXML
+    private TextField tfSearch;
+    @FXML
     private TableView<Product> productsTable;
     @FXML
     private TableColumn<Product, Integer> idCol;
@@ -43,17 +49,35 @@ public class ProductsController extends Controller implements Initializable {
     private TableColumn<Product, Double> orgPriceCol;
     @FXML
     private TableColumn<Product, Double> sellPriceCol;
-
     ObservableList<Product> productList = FXCollections.observableArrayList();
-
     Product selectedProduct = null;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblUsername.setText(Controller.getUser().getUsername());
         lblRole.setText(Controller.getUser().getRole());
-
         loadTable();
+        FilteredList<Product> filteredData = new FilteredList<>(productList, p -> true);
+
+        tfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(Product -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (String.valueOf(Product.getName()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                return false;
+            });
+        });
+
+        SortedList<Product> sortedList = new SortedList<>(filteredData);
+
+        sortedList.comparatorProperty().bind(productsTable.comparatorProperty());
+        productsTable.setItems(sortedList);
     }
 
     public void btnHomeAction(ActionEvent event) {
@@ -116,8 +140,34 @@ public class ProductsController extends Controller implements Initializable {
         orgPriceCol.setCellValueFactory(new PropertyValueFactory<>("orgPrice"));
         sellPriceCol.setCellValueFactory(new PropertyValueFactory<>("sellPrice"));
 
+        orgPriceCol.setCellFactory(c -> new TableCell<>() {
+            @Override
+            protected void updateItem(Double balance, boolean empty) {
+                super.updateItem(balance, empty);
+                if (balance == null || empty) {
+                    setText(null);
+                } else {
+                    setText("P" + String.format("%,.2f", balance.doubleValue()));
+                }
+            }
+        });
+        sellPriceCol.setCellFactory(c -> new TableCell<>() {
+            @Override
+            protected void updateItem(Double balance, boolean empty) {
+                super.updateItem(balance, empty);
+                if (balance == null || empty) {
+                    setText(null);
+                } else {
+                    setText("P" + String.format("%,.2f", balance.doubleValue()));
+                }
+            }
+        });
         getProductList();
         productsTable.setItems(productList);
+    }
+
+    public void cellFact () {
+
     }
 
     public void btnViewAction(ActionEvent event) throws IOException {
@@ -165,13 +215,14 @@ public class ProductsController extends Controller implements Initializable {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("update_product.fxml")));
         Parent root = loader.load();
         UpdateProductController updateProductController = loader.getController();
-        updateProductController.setProductInformation(selectedProduct.getName(), selectedProduct.getCategoryID(),
-                selectedProduct.getDescription(), selectedProduct.getQuantity(),
-                selectedProduct.getOrgPrice(), selectedProduct.getSellPrice());
+        updateProductController.setProductInformation(selectedProduct.getId(), selectedProduct.getName(),
+                selectedProduct.getCategoryID(), selectedProduct.getDescription(),
+                selectedProduct.getQuantity(), selectedProduct.getOrgPrice(), selectedProduct.getSellPrice());
         stage.setScene(new Scene(root));
         stage.setTitle("Update Product: " + selectedProduct.getName());
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
+        getProductList();
     }
 
     public void btnDeleteAction() {

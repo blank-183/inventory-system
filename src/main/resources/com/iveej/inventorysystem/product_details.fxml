@@ -28,7 +28,7 @@
             <Font name="Verdana" size="14.0" />
          </font>
       </Label>
-      <TextArea fx:id="textDescription" editable="false" layoutX="46.0" layoutY="227.0" prefHeight="86.0" prefWidth="426.0" stylesheets="@css/style.css" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac nisi tortor. Etiam tincidunt purus a luctus pellentesque. Donec finibus turpis sodales felis blandit molestie." wrapText="true">
+      <TextArea fx:id="textDescription" editable="false" layoutX="46.0" layoutY="227.0" prefHeight="86.0" prefWidth="426.0" style="-fx-background-color: transparent;" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac nisi tortor. Etiam tincidunt purus a luctus pellentesque. Donec finibus turpis sodales felis blandit molestie." wrapText="true">
          <font>
             <Font name="Verdana" size="15.0" />
          </font>
@@ -53,7 +53,7 @@
             <Font name="Verdana Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="87.0" layoutY="385.0" text="Original Price:">
+      <Label layoutX="96.0" layoutY="384.0" text="Original Price:">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
@@ -63,12 +63,12 @@
             <Font name="Verdana Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="309.0" layoutY="385.0" text="Selling Price:">
+      <Label layoutX="318.0" layoutY="384.0" text="Selling Price:">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblSellPrice" alignment="BASELINE_CENTER" layoutX="265.0" layoutY="403.0" prefHeight="30.0" prefWidth="207.0" text="P0.00">
+      <Label fx:id="lblSellPrice" alignment="BASELINE_CENTER" layoutX="260.0" layoutY="403.0" prefHeight="30.0" prefWidth="207.0" text="P0.00">
          <font>
             <Font name="Verdana Bold" size="14.0" />
          </font>
