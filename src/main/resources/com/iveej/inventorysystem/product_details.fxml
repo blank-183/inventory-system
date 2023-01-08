@@ -73,7 +73,7 @@
             <Font name="Verdana Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="btnClose" layoutX="201.0" layoutY="490.0" mnemonicParsing="false" onAction="#btnCloseAction" prefHeight="43.0" prefWidth="104.0" style="-fx-background-color: #8B0000;" text="Close" textFill="WHITE">
+      <Button fx:id="btnClose" layoutX="201.0" layoutY="490.0" mnemonicParsing="false" onAction="#btnCloseAction" prefHeight="43.0" prefWidth="104.0" style="-fx-background-color: #8B0000; -fx-cursor: hand;" text="Close" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="18.0" />
          </font>

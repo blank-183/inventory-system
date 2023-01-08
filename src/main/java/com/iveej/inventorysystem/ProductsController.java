@@ -8,9 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -21,6 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ProductsController extends Controller implements Initializable {
@@ -159,6 +158,26 @@ public class ProductsController extends Controller implements Initializable {
     }
 
     public void btnDeleteAction(ActionEvent event) throws IOException {
+        selectedProduct = productsTable.getSelectionModel().getSelectedItem();
+        String query = "DELETE FROM product WHERE id = ?";
 
+        if(selectedProduct == null) {
+            return;
+        }
+
+        Optional<ButtonType> result = confirm(Alert.AlertType.CONFIRMATION, Constant.CONFIRM_MESSAGE,
+                "You cannot undo this action. Do you really want to delete this product?", "Press \"ok\" to confirm.");
+        if(result.isPresent() && result.get() == ButtonType.OK) {
+            try(Connection conn = ConnectDB.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query);) {
+                stmt.setInt(1, selectedProduct.getId());
+                stmt.execute();
+                showMessage(Alert.AlertType.INFORMATION, "Success",
+                        "Product deleted!", "The product you selected was successfully deleted.");
+                getProductList();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 }
