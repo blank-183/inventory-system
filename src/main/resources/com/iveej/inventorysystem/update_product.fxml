@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="578.0" prefWidth="506.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iveej.inventorysystem.AddProductController">
+<AnchorPane prefHeight="578.0" prefWidth="506.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iveej.inventorysystem.UpdateProductController">
    <children>
-      <Label layoutX="170.0" layoutY="31.0" text="Add Product">
+      <Label layoutX="152.0" layoutY="31.0" text="Update Product">
          <font>
             <Font name="Verdana Bold" size="24.0" />
          </font>
@@ -86,7 +86,7 @@
             <Font name="Verdana" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="btn" layoutX="127.0" layoutY="489.0" mnemonicParsing="false" onAction="#btnAddAction" prefHeight="43.0" prefWidth="104.0" style="-fx-background-color: #2e4950; -fx-cursor: hand;" text="Add" textFill="WHITE">
+      <Button fx:id="btnUpdate" layoutX="127.0" layoutY="489.0" mnemonicParsing="false" onAction="#btnUpdateAction" prefHeight="43.0" prefWidth="104.0" style="-fx-background-color: #2e4950; -fx-cursor: hand;" text="Update" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="18.0" />
          </font>

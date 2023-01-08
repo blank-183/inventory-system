@@ -137,10 +137,10 @@
               <columns>
                 <TableColumn fx:id="idCol" prefWidth="59.0" text="ID" />
                 <TableColumn fx:id="nameCol" prefWidth="235.0" text="Product Name" />
-                  <TableColumn fx:id="categoryCol" prefWidth="142.0" text="Category" />
-                  <TableColumn fx:id="quantityCol" prefWidth="90.0" text="Quantity" />
-                  <TableColumn fx:id="orgPriceCol" prefWidth="117.0" text="Original Price" />
-                  <TableColumn fx:id="sellPriceCol" prefWidth="116.0" text="Selling Price" />
+                  <TableColumn fx:id="categoryCol" prefWidth="117.33331298828125" text="Category ID" />
+                  <TableColumn fx:id="quantityCol" prefWidth="97.77783203125" text="Quantity" />
+                  <TableColumn fx:id="orgPriceCol" prefWidth="120.0" text="Original Price" />
+                  <TableColumn fx:id="sellPriceCol" prefWidth="131.5556640625" text="Selling Price" />
               </columns>
             </TableView>
             <Button fx:id="btnView" layoutX="112.0" layoutY="577.0" mnemonicParsing="false" onAction="#btnViewAction" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #2e4950; -fx-background-radius: 25px; -fx-cursor: hand;" text="View" textFill="WHITE">

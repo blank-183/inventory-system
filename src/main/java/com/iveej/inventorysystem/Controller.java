@@ -19,6 +19,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -174,5 +175,26 @@ public class Controller {
         if(result.isPresent() && result.get() == ButtonType.OK) {
             changeScene(event, fxml, title);
         }
+    }
+
+    public ArrayList<String> loadCategories() {
+        String query = "SELECT category_name FROM category";
+        ArrayList<String> categories = new ArrayList<>();
+
+        try(Connection conn = ConnectDB.getConnection()) {
+            assert conn != null;
+            try(PreparedStatement stmt = conn.prepareStatement(query);
+                ResultSet rs = stmt.executeQuery()) {
+
+                while(rs.next()) {
+                    String category = rs.getString("category_name");
+                    categories.add(category);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return categories;
     }
 }

@@ -3,16 +3,16 @@ package com.iveej.inventorysystem;
 public class Product {
     private int id;
     private String name;
-    private String category;
+    private int categoryID;
     private String description;
     private int quantity;
     private double orgPrice;
     private double sellPrice;
 
-    Product(int id, String name, String category, String description, int quantity, double orgPrice, double sellPrice) {
+    Product(int id, String name, int categoryID, String description, int quantity, double orgPrice, double sellPrice) {
         this.id = id;
         this.name = name;
-        this.category = category;
+        this.categoryID = categoryID;
         this.description = description;
         this.quantity = quantity;
         this.orgPrice = orgPrice;
@@ -27,8 +27,8 @@ public class Product {
         return name;
     }
 
-    public String getCategory() {
-        return category;
+    public int getCategoryID() {
+        return categoryID;
     }
 
     public String getDescription() {

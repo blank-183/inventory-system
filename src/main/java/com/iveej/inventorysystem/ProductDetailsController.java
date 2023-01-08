@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
-public class ProductDetailsController {
+public class ProductDetailsController extends Controller {
 
     @FXML
     private Label lblName;
@@ -29,9 +29,9 @@ public class ProductDetailsController {
         stage.close();
     }
 
-    public void setProductInformation(String name, String category, String description, Integer quantity, Double orgPrice, Double sellPrice) {
+    public void setProductInformation(String name, int category, String description, Integer quantity, Double orgPrice, Double sellPrice) {
         lblName.setText(name);
-        lblCategory.setText(category);
+        lblCategory.setText(getCategory(category));
         textDescription.setText(description);
         if(quantity <= 1) {
             lblQuantity.setText(quantity + " pc");

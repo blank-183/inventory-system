@@ -3,24 +3,22 @@ package com.iveej.inventorysystem;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 
-public class AddProductController implements Initializable {
+public class AddProductController extends Controller implements Initializable {
 
     @FXML
-    private Button btnClose;
+    private Button btnCancel;
     @FXML
     private Button btnAdd;
     @FXML
@@ -35,11 +33,12 @@ public class AddProductController implements Initializable {
     private TextField tfOrgPrice;
     @FXML
     private TextField tfSellPrice;
-    private ArrayList<String> categories = new ArrayList<>();
+
+     private ArrayList<String> categories = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadCategories();
+        categories  = loadCategories();
         cbCategory.getItems().addAll(categories);
         cbCategory.setValue(categories.get(0));
 
@@ -62,30 +61,44 @@ public class AddProductController implements Initializable {
         });
     }
 
-    public void btnCloseAction() {
-        Stage stage = (Stage) btnClose.getScene().getWindow();
+    public void btnCancelAction() {
+        Stage stage = (Stage) btnCancel.getScene().getWindow();
         stage.close();
     }
 
     public void btnAddAction(ActionEvent event) {
-        // wait
-    }
+        String productName = tfProductName.getText().trim();
+        Integer categoryID = Integer.parseInt(String.valueOf(categories.indexOf(cbCategory.getValue()))) + 1;
+        String description = taDescription.getText();
+        Integer quantity = Integer.parseInt(tfQuantity.getText());
+        Double orgPrice = Double.parseDouble(tfOrgPrice.getText());
+        Double sellPrice = Double.parseDouble(tfSellPrice.getText());
 
-    public void loadCategories() {
-        String query = "SELECT category_name FROM category";
+        if(!isNoBlankField(productName, categoryID.toString(), description, quantity.toString(), orgPrice.toString(), sellPrice.toString())) { return; }
 
-        try(Connection conn = ConnectDB.getConnection()) {
-            assert conn != null;
-            try(PreparedStatement stmt = conn.prepareStatement(query);
-                ResultSet rs = stmt.executeQuery()) {
+        String query = "INSERT INTO product (product_name, category_id, description, quantity, original_price, selling_price) VALUES (?, ?, ?, ?, ?, ?)";
 
-                while(rs.next()) {
-                    String category = rs.getString("category_name");
-                    categories.add(category);
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        try(Connection conn = ConnectDB.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, productName);
+            stmt.setInt(2, categoryID);
+            stmt.setString(3, description);
+            stmt.setInt(4, quantity);
+            stmt.setDouble(5, orgPrice);
+            stmt.setDouble(6, sellPrice);
+
+            stmt.execute();
+
+            showMessage(Alert.AlertType.INFORMATION, Constant.SUCCESS_MESSAGE,
+                    "Product successfully added!",
+                    "You can now view the product.");
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
+
 }
