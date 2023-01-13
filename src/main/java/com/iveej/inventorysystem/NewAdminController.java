@@ -33,7 +33,7 @@ public class NewAdminController extends Controller {
         String password = pfPassword.getText();
         String confirmPassword = pfConfirmPassword.getText();
 
-        if(!isNoBlankField(firstName, lastName, username, password, confirmPassword)) { return; }
+        if(isNoBlankField(firstName, lastName, username, password, confirmPassword)) { return; }
         if(!isValidLength(firstName, lastName, username)) { return; }
         if(isUsernameValid(username)) { return; }
         if(!isPasswordStrong(password)) { return; }

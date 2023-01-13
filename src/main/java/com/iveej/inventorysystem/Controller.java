@@ -20,6 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -105,10 +106,10 @@ public class Controller {
                 showMessage(Alert.AlertType.ERROR, Constant.ERROR_MESSAGE,
                         "Missing input!",
                         "Please fill all the required fields.");
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public boolean isUsernameValid(String username) {
@@ -177,7 +178,7 @@ public class Controller {
         }
     }
 
-    public ArrayList<String> loadCategories() {
+    public List<String> loadCategories() {
         String query = "SELECT category_name FROM category";
         ArrayList<String> categories = new ArrayList<>();
 

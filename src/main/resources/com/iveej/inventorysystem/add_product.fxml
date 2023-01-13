@@ -86,7 +86,7 @@
             <Font name="Verdana" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="btn" layoutX="127.0" layoutY="489.0" mnemonicParsing="false" onAction="#btnAddAction" prefHeight="43.0" prefWidth="104.0" style="-fx-background-color: #2e4950; -fx-cursor: hand;" text="Add" textFill="WHITE">
+      <Button fx:id="btnAdd" layoutX="127.0" layoutY="489.0" mnemonicParsing="false" onAction="#btnAddAction" prefHeight="43.0" prefWidth="104.0" style="-fx-background-color: #2e4950; -fx-cursor: hand;" text="Add" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="18.0" />
          </font>

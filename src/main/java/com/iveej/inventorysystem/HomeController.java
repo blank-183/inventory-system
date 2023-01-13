@@ -32,7 +32,7 @@ public class HomeController extends Controller implements Initializable {
     }
 
     public void btnCategoriesAction(ActionEvent event) {
-
+        changeScene(event, "categories.fxml", "View Categories");
     }
 
     public void btnNewOrderAction(ActionEvent event) {

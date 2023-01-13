@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -35,7 +36,7 @@ public class UpdateProductController extends Controller implements Initializable
     @FXML
     private TextField tfSellPrice;
 
-    private ArrayList<String> categories = new ArrayList<>();
+    private List<String> categories = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -75,7 +76,7 @@ public class UpdateProductController extends Controller implements Initializable
         String orgPrice = tfOrgPrice.getText();
         String sellPrice = tfSellPrice.getText();
 
-        if (!isNoBlankField(productName, categoryID, description, quantity, orgPrice, sellPrice)) {
+        if (isNoBlankField(productName, categoryID, description, quantity, orgPrice, sellPrice)) {
             return;
         }
 
@@ -113,7 +114,7 @@ public class UpdateProductController extends Controller implements Initializable
     }
 
     public void setProductInformation(int id, String name, int categoryID, String description, int quantity, Double orgPrice, Double sellPrice) {
-        ArrayList<String> categories = loadCategories();
+        List<String> categories = loadCategories();
         this.productID = id;
         tfProductName.setText(name);
         cbCategory.setValue(categories.get(categoryID - 1));

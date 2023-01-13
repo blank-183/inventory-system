@@ -14,7 +14,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,7 +21,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Formatter;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -59,20 +57,15 @@ public class ProductsController extends Controller implements Initializable {
         loadTable();
         FilteredList<Product> filteredData = new FilteredList<>(productList, p -> true);
 
-        tfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(Product -> {
-                // If filter text is empty, display all persons.
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                String lowerCaseFilter = newValue.toLowerCase();
+        tfSearch.textProperty().addListener((observable, oldValue, newValue) -> filteredData.setPredicate(product -> {
+            // If filter text is empty, display all persons.
+            if (newValue == null || newValue.isEmpty()) {
+                return true;
+            }
+            String lowerCaseFilter = newValue.toLowerCase();
 
-                if (String.valueOf(Product.getName()).toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }
-                return false;
-            });
-        });
+            return String.valueOf(product.getName()).toLowerCase().contains(lowerCaseFilter);
+        }));
 
         SortedList<Product> sortedList = new SortedList<>(filteredData);
 
@@ -85,7 +78,7 @@ public class ProductsController extends Controller implements Initializable {
     }
 
     public void btnCategoriesAction(ActionEvent event) {
-
+        changeScene(event, "categories.fxml", "View Categories");
     }
 
     public void btnNewOrderAction(ActionEvent event) {
@@ -111,7 +104,6 @@ public class ProductsController extends Controller implements Initializable {
     private void getProductList() {
         productList.clear();
         String query = "SELECT * FROM product";
-        Formatter formatter = new Formatter();
 
         try(Connection conn = ConnectDB.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query);
@@ -147,7 +139,7 @@ public class ProductsController extends Controller implements Initializable {
                 if (balance == null || empty) {
                     setText(null);
                 } else {
-                    setText("P" + String.format("%,.2f", balance.doubleValue()));
+                    setText("P" + String.format("%,.2f", balance));
                 }
             }
         });
@@ -158,16 +150,12 @@ public class ProductsController extends Controller implements Initializable {
                 if (balance == null || empty) {
                     setText(null);
                 } else {
-                    setText("P" + String.format("%,.2f", balance.doubleValue()));
+                    setText("P" + String.format("%,.2f", balance));
                 }
             }
         });
         getProductList();
         productsTable.setItems(productList);
-    }
-
-    public void cellFact () {
-
     }
 
     public void btnViewAction(ActionEvent event) throws IOException {
@@ -195,8 +183,6 @@ public class ProductsController extends Controller implements Initializable {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("add_product.fxml")));
         Parent root = loader.load();
-        AddProductController addProductController = loader.getController();
-
         stage.setScene(new Scene(root));
         stage.setTitle("Add Product");
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -245,6 +231,9 @@ public class ProductsController extends Controller implements Initializable {
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
+                showMessage(Alert.AlertType.ERROR, Constant.ERROR_MESSAGE,
+                        "Cannot delete product!",
+                        "The product must be in used by another table.");
             }
         }
     }
